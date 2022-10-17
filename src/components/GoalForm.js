@@ -31,7 +31,7 @@ const GoalForm = (props) => {
                         <Card style={{width: '40rem'}} >
 
                             <Card.Body>
-                                <Card.Title>Course Goal</Card.Title>
+                                <Card.Title>Project Goal</Card.Title>
                                 <Form action={""} onSubmit={GoalSubmit}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         <Form.Control type="text" placeholder="Enter Goal" name="name" onChange={getCourseGoals}/>
