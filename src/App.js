@@ -1,25 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
 
+import GoalForm from "./components/GoalForm";
+import GoalList from "./components/GoalList";
+import {useState} from "react";
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [goalList, updateGoal] = useState("");
+    const getGoals = (value) => {
+
+        updateGoal((prevGoal) => {
+            return [value.goal, ...prevGoal]
+        })
+
+    }
+
+    const remainingGoals = (value) => {
+        let deleteItem = goalList.filter(item => item !== value);
+        updateGoal(deleteItem);
+    }
+
+
+    return (
+        <div>
+            <GoalForm parentCallback={getGoals}></GoalForm>
+            <GoalList goalList={goalList} deleteItem={remainingGoals}></GoalList>
+        </div>
+    );
 }
 
 export default App;
